@@ -17,6 +17,7 @@ function App() {
         >
           Learn Reacts heres
           Push and pull practice!
+          Sample
         </a>
       </header>
     </div>
