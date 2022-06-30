@@ -15,7 +15,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn Reacts heres
+          Push and pull practice!
+          Simultaneous push.
         </a>
       </header>
     </div>
