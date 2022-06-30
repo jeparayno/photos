@@ -16,8 +16,6 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn Reacts heres
-          Push and pull practice!
-          Simultaneous push.
         </a>
       </header>
     </div>
