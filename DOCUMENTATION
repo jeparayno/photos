@@ -1,0 +1,21 @@
+NEED TO INSTALL
+
+
+for front-end
+
+
+for back-end
+
+express
+mongoose
+cors
+jsonwebtoken
+morgan
+bcrypt
+validator
+
+
+you need to create you .env file
+
+JWT_SECRET = YOUR SECRET KEY
+JWT_LIFETIME = ITS UP TO YUO. format: 1d
