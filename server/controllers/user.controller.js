@@ -25,6 +25,7 @@ const login = async(req,res) => {
 
     if(!email || !password) {
         res.status(500).json({msg:"please provide all values"})
+        return;
     }
     const user = await User.findOne({email}).select('+password')
 
@@ -56,9 +57,20 @@ const getAll = async(req, res) => {
         })
 }
 
+const getOneUser = async(req, res) => {
+    User.findOne({ _id: req.params.id})
+        .then((oneUser) => {
+            res.json(oneUser);
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        })
+}
+
 module.exports = {
     index,
     register,
     login,
-    getAll
+    getAll,
+    getOneUser
 }

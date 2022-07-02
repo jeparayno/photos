@@ -3,6 +3,12 @@ NEED TO INSTALL
 
 for front-end
 
+axios
+moment
+react-router-dom
+bootstrap
+react-redux
+
 
 for back-end
 

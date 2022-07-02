@@ -5,4 +5,5 @@ module.exports = (app) => {
     app.post('/api/new', UserRouter.register);
     app.post('/api/login', UserRouter.login);
     app.get('/api/all', UserRouter.getAll);
+    app.get('/api/user/:id', UserRouter.getOneUser);
 }
