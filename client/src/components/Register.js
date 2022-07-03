@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
@@ -42,7 +42,7 @@ const Register = () => {
         <>
             <div>
                 <h1>Register here</h1>
-                <form onSubmit={submitRegistration}>
+                <form className='form--submits' onSubmit={submitRegistration}>
                     <div className='mb-3'>
                         <label for="name" className='form-label'>Name</label>
                         <input type="name" className="form-control" placeholder='Enter Your Name' value={name} onChange={(e) => setName(e.target.value)} />
@@ -59,8 +59,9 @@ const Register = () => {
                         <input type="checkbox" onClick={showPassword} /> Show Password <br />
                         {errors.password && (<span>{errors.password.message}</span>)}
                     </div>
-                    <button className='btn btn-success'>Register</button>
+                    <button className='btn btn-success'>Register</button> &nbsp; <Link to={'/login'} ><button className="btn btn-outline-success" type="submit">Log In</button></Link>
                 </form>
+                
             </div>
         </>
     )

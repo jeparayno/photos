@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const Login = ({setLogInUser}) => {
 
@@ -41,7 +42,7 @@ const Login = ({setLogInUser}) => {
             <div>
                 <h1>Log in here</h1>
             </div>
-            <form onSubmit={loginUser}>
+            <form className="form--submits" onSubmit={loginUser}>
                     <div className='mb-3'>
                         <label for="email" className='form-label'>Email</label>
                         <input type="email" className="form-control" placeholder='Enter Your Email' value={email} onChange={(e) => setEmail(e.target.value)} required />
@@ -53,8 +54,8 @@ const Login = ({setLogInUser}) => {
                         <input type="checkbox" onClick={showPassword} /> Show Password <br />
                         {/* {errors.password && (<span>{errors.password.message}</span>)} */}
                     </div>
-                    <button className='btn btn-success'>Register</button>
-                </form>
+                    <button className='btn btn-success'>LOG IN</button> &nbsp; <Link to={'/'} ><button className="btn btn-outline-success" type="submit">Register</button></Link>
+            </form>
         </>
     )
 }

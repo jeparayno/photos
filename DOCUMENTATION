@@ -8,6 +8,8 @@ moment
 react-router-dom
 bootstrap
 react-redux
+react-cookie
+react-toastify
 
 
 for back-end
@@ -19,6 +21,7 @@ jsonwebtoken
 morgan
 bcrypt
 validator
+cookie-parser
 
 
 you need to create you .env file
