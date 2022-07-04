@@ -8,6 +8,13 @@ const getallSingleFiles =  ((req, res) => {
     .catch((err)=>res.json(err))
 })
 
+const getOneFile =  ((req, res) => {
+    PhotoModel.findOne({_id: req.params.photoId})
+    .then((onePhoto)=>{
+        res.json(onePhoto)})
+    .catch((err)=>res.json(err))
+})
+
 const recentlyUploaded =  ((req, res) => {
     PhotoModel.find().sort({createdAt:-1}).limit(5)
     .then((uploadedPhoto)=>{
@@ -49,10 +56,18 @@ const deleteOneFile = ((req,res)=>{
     .catch((err)=>console.log(err))
 })
 
+const deleteOne = ((req, res) => {
+    PhotoModel.deleteOne({_id: req.params.photoId}) //deletes photo in DB
+    .then((deletePhoto) => {res.json(deletePhoto)})
+    .catch((err) => {res.status(400).json(err);})
+}); 
+
 module.exports = {
     recentlyUploaded,
     topLikes,
     singleFileUpload,
     getallSingleFiles,
     deleteOneFile,
+    getOneFile,
+    deleteOne,
 }

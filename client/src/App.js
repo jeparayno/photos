@@ -14,6 +14,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import AddPhoto from './components/AddPhoto';
+import PhotoDetails from './components/PhotoDetails';
 
 
 const App=()=> {
@@ -29,6 +30,7 @@ const App=()=> {
           <Route path={'/login'} element={<Login />} />
           <Route path={'/form'} element={<AddPhoto photoCollection={photoCollection} setPhotoCollection={setPhotoCollection}/>}/>
           <Route path={'/dashboard'} element={<Dashboard/>} />
+          <Route path={'/dashboard/photos/:aid'} element={<PhotoDetails/>}></Route>
         </Routes>
       </Router>
     </div>
