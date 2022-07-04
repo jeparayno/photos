@@ -1,14 +1,24 @@
 const PhotoModel = require('../models/photo.models');
 const fs = require("fs");
 
-const connectionCheck =((req,res)=>{
-    res.json({ message: "Connection is properly Working.. for now.." });
-})
-
-const getallSingleFiles =  ((req, res,next) => {
+const getallSingleFiles =  ((req, res) => {
     PhotoModel.find()
     .then((allPhotos)=>{
         res.json(allPhotos)})
+    .catch((err)=>res.json(err))
+})
+
+const recentlyUploaded =  ((req, res) => {
+    PhotoModel.find().sort({createdAt:-1}).limit(5)
+    .then((uploadedPhoto)=>{
+        res.json(uploadedPhoto)})
+    .catch((err)=>res.json(err))
+})
+
+const topLikes =  ((req, res) => {
+    PhotoModel.find().sort({likes:-1}).limit(5)
+    .then((likedPhotos)=>{
+        res.json(likedPhotos)})
     .catch((err)=>res.json(err))
 })
 
@@ -40,6 +50,8 @@ const deleteOneFile = ((req,res)=>{
 })
 
 module.exports = {
+    recentlyUploaded,
+    topLikes,
     singleFileUpload,
     getallSingleFiles,
     deleteOneFile,
