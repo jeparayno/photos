@@ -13,11 +13,12 @@ const getallSingleFiles =  ((req, res,next) => {
 })
 
 const singleFileUpload = ((req, res)=>{
-    console.log(req.file.path)
     const file = {
         fileName: req.file.originalname,
         filePath: req.file.path,
         fileType: req.file.mimetype,
+        description: req.body.description,
+        likes: req.body.likes
     }
     PhotoModel.create(file)
     .then((newFile)=>{
@@ -38,16 +39,8 @@ const deleteOneFile = ((req,res)=>{
     .catch((err)=>console.log(err))
 })
 
-const deleteAllFiles = ((req,res)=>{
-    PhotoModel.deleteMany({})
-    .then((deletedPhotos)=>res.json(deletedPhotos))
-    .catch((err)=>console.log(err))
-})
-
 module.exports = {
-    connectionCheck,
     singleFileUpload,
     getallSingleFiles,
-    deleteAllFiles,
     deleteOneFile,
 }

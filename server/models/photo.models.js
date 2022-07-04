@@ -9,7 +9,13 @@ const singleFileSchema = new Schema({
     },
     fileType: {
         type: String,
-    }
+    },
+    description: {
+        type: String,
+    },
+    likes: {
+        type: Number,
+    },
 }, {timestamps: true});
 
 const Upload = model('Upload', singleFileSchema);

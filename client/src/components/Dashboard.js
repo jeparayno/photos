@@ -25,7 +25,6 @@ const Dashboard = (props) => {
         axios.get("http://localhost:8000/api/photos/getSingleFiles")
         .then((res)=>{
             setShowPhotos(res.data)
-            console.log(res.data)
         })
         .catch((err)=>{
             console.log(err)
