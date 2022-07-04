@@ -17,16 +17,18 @@ const TopLikes=()=> {
 
     return (
         <div>
-            <h1>Top Likes</h1>
-                {showTop&&
-                        showTop.map((elems,index)=>{
-                            return(
-                                <div key={index}>
-                                    <img src={`http://localhost:8000/${elems.filePath}`} alt={elems.fileName}></img>
-                                </div>
-                            )
-                        })
+            <h5>Top Likes</h5>
+                <div class="row">
+                    {showTop&&
+                            showTop.map((elems,index)=>{
+                                return(
+                                    <div key={index} class="col">
+                                        <img src={`http://localhost:8000/${elems.filePath}`} alt={elems.fileName} class="img-thumbnail" style={{cursor:'pointer'}}></img>
+                                    </div>
+                                )
+                            })
                     }
+                    </div>
         </div>
     )
 }

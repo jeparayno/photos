@@ -34,20 +34,23 @@ const Dashboard = (props) => {
 
     return (
         <>
-            <div>
+            <div className="dashboard">
                 <h1>Dashboard here for {`${user.name}`}</h1>
-            {showPhotos&&
-                    showPhotos.map((elems,index)=>{
-                        return(
-                            <div key={index}>
-                                <img src={`http://localhost:8000/${elems.filePath}`} alt={elems.fileName}></img>
-                            </div>
-                        )
-                    })
-                }
+                {showPhotos.length >=1 && <RecentlyUploaded/>}
+                {showPhotos.length >=1 && <TopLikes/>}
+                <h5>All Photos</h5>
+                <div class="row">
+                    {showPhotos&&
+                            showPhotos.map((elems,index)=>{
+                                return(
+                                    <div key={index} class="col-6 col-sm-3">
+                                        <img src={`http://localhost:8000/${elems.filePath}`} alt={elems.fileName} class="img-thumbnail" style={{cursor:'pointer'}}></img>
+                                    </div>
+                                )
+                            })
+                    }
+                </div>
             </div>
-            {showPhotos.length >=1 && <RecentlyUploaded/>}
-            {showPhotos.length >=1 && <TopLikes/>}
         </>
     )
 }
