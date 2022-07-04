@@ -22,6 +22,7 @@ morgan
 bcrypt
 validator
 cookie-parser
+multer
 
 
 you need to create you .env file
