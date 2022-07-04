@@ -7,12 +7,18 @@ import {
   Route
 }   
 from 'react-router-dom';  
+import { useState } from 'react';
+
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
+import AddPhoto from './components/AddPhoto';
 
-function App() {
+
+const App=()=> {
+
+  const [photoCollection,setPhotoCollection] = useState([]);
 
   return (
     <div className="App">
@@ -21,7 +27,8 @@ function App() {
         <Routes>
           <Route path={'/'} element={<Register />} />
           <Route path={'/login'} element={<Login />} />
-          <Route path={'/dashboard'} element={<Dashboard />} />
+          <Route path={'/form'} element={<AddPhoto photoCollection={photoCollection} setPhotoCollection={setPhotoCollection}/>}/>
+          <Route path={'/dashboard'} element={<Dashboard photoCollection={photoCollection} setPhotoCollection={setPhotoCollection}/>} />
         </Routes>
       </Router>
     </div>
