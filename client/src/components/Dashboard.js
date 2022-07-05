@@ -38,7 +38,7 @@ const Dashboard = (props) => {
                 <h1>Dashboard here for {`${user.name}`}</h1>
                 {showPhotos.length >=1 && <RecentlyUploaded/>}
                 {showPhotos.length >=1 && <TopLikes/>}
-                <h5>All Photos</h5>
+                <h6>All Photos</h6>
                 <div class="row">
                     {showPhotos&&
                             showPhotos.map((elems,index)=>{

@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -37,16 +42,56 @@
   }
 }
 
-
 /* REGISTER PAGE */
-
 .form--submits {
   width: 30%;
   margin: 0 auto;
 }
 
+/* NAVBAR */
+.fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f9fa;
+  height: 10vh;
+  width: 100%;
+}
+
+.fluid img {
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.nav-profile {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 200px;
+  padding-top: 10px;
+}
+
+.nav-profile p {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.select {
+  width: 20px;
+}
+
+.select option {
+  font-size: 1rem;
+}
+
 /* DASHBOARD */
 .dashboard {
-  width: 70%;
+  width: 50%;
   margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.dashboard h6 {
+  text-align: left;
+  margin-top: 50px;
 }

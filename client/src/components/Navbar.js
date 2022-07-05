@@ -1,12 +1,32 @@
+import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
+
+    const navigate = useNavigate();
+
+    const uploadHandler =(e)=>{
+        e.preventDefault();
+        navigate("/upload")
+    }
 
     return (
         <>
-        <nav className="navbar bg-light">
-            <div className="container-fluid">
-                    <img src="https://e7.pngegg.com/pngimages/359/743/png-clipart-logo-community-text-logo-thumbnail.png" alt="logo" width="46" height="44" className="d-inline-block align-text-top" />
+            <div className="fluid">
+                <img src={process.env.PUBLIC_URL+"Photobomb_Logo.png"} alt="logo" width="200" height="44" classNameName="d-inline-block align-text-top" />
+                <form className="d-flex" role="search">
+                    <input className="form-control me-2" type="search" placeholder="Search" aria-p="Search"/>
+                    <button className="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <div className="nav-profile">
+                    <p onClick={(e)=>uploadHandler(e)}>Upload</p>
+                    <p>Profile
+                        <select className="select">
+                            <option>Edit Account</option>
+                            <option>Logout</option>
+                        </select>
+                    </p>
+                </div>
             </div>
-        </nav>
         </>
     )
 }

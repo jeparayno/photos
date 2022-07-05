@@ -27,7 +27,7 @@ const App=()=> {
         <Routes>
           <Route path={'/'} element={<Register />} />
           <Route path={'/login'} element={<Login />} />
-          <Route path={'/form'} element={<AddPhoto photoCollection={photoCollection} setPhotoCollection={setPhotoCollection}/>}/>
+          <Route path={'/upload'} element={<AddPhoto photoCollection={photoCollection} setPhotoCollection={setPhotoCollection}/>}/>
           <Route path={'/dashboard'} element={<Dashboard/>} />
         </Routes>
       </Router>

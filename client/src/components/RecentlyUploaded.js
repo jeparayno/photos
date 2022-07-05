@@ -17,7 +17,7 @@ const RecentlyUploaded=()=> {
 
     return (
         <div>
-            <h5>Recently Uploaded</h5>
+            <h6>Recently Uploaded</h6>
                 <div class="row">
                 {showRecent&&
                         showRecent.map((elems,index)=>{

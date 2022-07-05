@@ -17,7 +17,7 @@ const TopLikes=()=> {
 
     return (
         <div>
-            <h5>Top Likes</h5>
+            <h6>Top Likes</h6>
                 <div class="row">
                     {showTop&&
                             showTop.map((elems,index)=>{
