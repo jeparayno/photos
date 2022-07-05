@@ -64,6 +64,12 @@ const deleteOne = ((req, res) => {
     .catch((err) => {res.status(400).json(err);})
 }); 
 
+const updateOne = ((req, res) => {
+    PhotoModel.findOneAndUpdate({_id: req.params.photoId}, req.body, { new: true, runValidators: true }) //update photo data in DB
+    .then((updatedPhoto) => {res.json(updatedPhoto)})
+    .catch((err) => {res.status(400).json(err);})
+}); 
+
 module.exports = {
     getallSingleFiles,
     recentlyUploaded,
@@ -72,4 +78,5 @@ module.exports = {
     getOneFile,
     searchFile,
     deleteOne,
+    updateOne,
 }

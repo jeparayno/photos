@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import moment from 'moment';
 
 
+
 const PhotoDetails = (props) => {
 
     const navigate = useNavigate();
@@ -35,7 +36,7 @@ const PhotoDetails = (props) => {
         axios.get("http://localhost:8000/api/photos/getOneFile/"+ aid)
         .then((res)=>{
             setOnePhoto(res.data)
-            console.log(res.data)
+            // console.log(res.data)
         })
         .catch((err)=>{
             console.log(err)
@@ -55,9 +56,32 @@ const PhotoDetails = (props) => {
         }
     }
 
+    const likeHandler = (e) =>{
+        e.preventDefault();
+        axios.put("http://localhost:8000/api/photos/updateOne/"+ aid, 
+        {
+            fileName,
+            filePath,
+            fileType, 
+            description, 
+            likes: likes + 1,
+            createdAt
+        }
+        )
+        .then((res)=>{
+            // console.log(res);
+            // console.log(res.data);
+            setOnePhoto(res.data);
+        })
+        .catch((err)=>{
+            console.log(err.response.data.errors);
+        })
+    }
+
     return(
         <div className="view-container">
             <div className="top">
+                
                 
                 <button onClick={() => deleteHandler()} className="btn btn-danger">Delete</button>
                 <button onClick={() => navigate('/dashboard')} className="btn btn-primary">Go to Dashboard</button>
@@ -65,11 +89,17 @@ const PhotoDetails = (props) => {
             <div className="photo-body">
                 <div>
                     <img src={`http://localhost:8000/${filePath}`} alt={fileName} className="image" style={{cursor:'pointer'}}></img>
+                    
                 </div>
 
                 <div className="photo-details">
-                    <h5>Filename: {fileName}</h5>
-                    <h5>Upload Date: {moment(createdAt).utc().format('YYYY-MM-DD')}</h5>
+                    <table className="table-photo">
+                        <h4>Filename:   <span className="description">{fileName}</span> </h4>
+                        <h4>Description:  <span className="description">{description}</span></h4>
+                        <h4>Upload Date:  <span className="description">{moment(createdAt).utc().format('YYYY-MM-DD')}</span></h4>
+                        <h4>Total Likes:  <span className="description">{likes}</span></h4>
+                        <button type="button" className="btn btn-like btn-lg btn-block" onClick={(e) => {likeHandler(e)}}> 👍 Like</button>
+                    </table>
                 </div>
             </div>
         </div>

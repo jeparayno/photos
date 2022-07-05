@@ -9,4 +9,5 @@ module.exports = (app) => {
     app.get('/api/photos/getOneFile/:photoId', PhotoController.getOneFile);
     app.get('/api/photos/getOneFile/:description', PhotoController.searchFile);
     app.delete('/api/photos/deleteOne/:photoId', PhotoController.deleteOne);
+    app.put('/api/photos/updateOne/:photoId', PhotoController.updateOne);
 }
