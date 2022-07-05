@@ -44,17 +44,17 @@ const Register = () => {
                 <h1>Register here</h1>
                 <form className='form--submits' onSubmit={submitRegistration}>
                     <div className='mb-3'>
-                        <label for="name" className='form-label'>Name</label>
-                        <input type="name" className="form-control" placeholder='Enter Your Name' value={name} onChange={(e) => setName(e.target.value)} />
+                        <label htmlFor="name" className='form-label'>Name</label>
+                        <input type="text" className="form-control" placeholder='Enter Your Name' value={name} onChange={(e) => setName(e.target.value)} />
                         {errors.name && (<span>{errors.name.message}</span>)}
                     </div>
                     <div className='mb-3'>
-                        <label for="email" className='form-label'>Email</label>
+                        <label htmlFor="email" className='form-label'>Email</label>
                         <input type="email" className="form-control" placeholder='Enter Your Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                         {errors.email && (<span>{errors.email.message}</span>)}
                     </div>
                     <div className='mb-3'>
-                        <label for="password" className='form-label'>Password</label>
+                        <label htmlFor="password" className='form-label'>Password</label>
                         <input type="password" className="form-control" id='myPassword' placeholder='Enter Your Password' value={password} onChange={(e) => setPassword(e.target.value)} />
                         <input type="checkbox" onClick={showPassword} /> Show Password <br />
                         {errors.password && (<span>{errors.password.message}</span>)}

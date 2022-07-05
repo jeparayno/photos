@@ -8,13 +8,6 @@ const getallSingleFiles =  ((req, res) => {
     .catch((err)=>res.json(err))
 })
 
-const getOneFile =  ((req, res) => {
-    PhotoModel.findOne({_id: req.params.photoId})
-    .then((onePhoto)=>{
-        res.json(onePhoto)})
-    .catch((err)=>res.json(err))
-})
-
 const recentlyUploaded =  ((req, res) => {
     PhotoModel.find().sort({createdAt:-1}).limit(5)
     .then((uploadedPhoto)=>{
@@ -47,27 +40,36 @@ const singleFileUpload = ((req, res)=>{
     })
 })
 
-const deleteOneFile = ((req,res)=>{
-    PhotoModel.findByIdAndDelete({_id:req.params.photoId})
-    .then((deletedPhoto)=>{
-        fs.unlinkSync(deletedPhoto.filePath) // deletes photo in uploads folder
-        res.json(deletedPhoto)
-    })
-    .catch((err)=>console.log(err))
+const getOneFile =  ((req, res) => {
+    PhotoModel.findOne({_id: req.params.photoId})
+    .then((onePhoto)=>{
+        res.json(onePhoto)})
+    .catch((err)=>res.json(err))
+})
+
+const searchFile =  ((req, res) => {
+    const filter = req.params.description;
+    PhotoModel.find({"description":{$regex: ".*" + filter + ".*" }})
+    .then((search)=>{
+        res.json(search)})
+    .catch((err)=>res.json(err))
 })
 
 const deleteOne = ((req, res) => {
-    PhotoModel.deleteOne({_id: req.params.photoId}) //deletes photo in DB
-    .then((deletePhoto) => {res.json(deletePhoto)})
+    PhotoModel.findByIdAndDelete({_id: req.params.photoId}) //deletes photo in DB
+    .then((deletePhoto) => {
+        fs.unlinkSync(deletePhoto.filePath) // deletes photo in uploads folder
+        res.json(deletePhoto)
+    })
     .catch((err) => {res.status(400).json(err);})
 }); 
 
 module.exports = {
+    getallSingleFiles,
     recentlyUploaded,
     topLikes,
     singleFileUpload,
-    getallSingleFiles,
-    deleteOneFile,
     getOneFile,
+    searchFile,
     deleteOne,
 }
